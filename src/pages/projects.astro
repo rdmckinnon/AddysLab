@@ -1,0 +1,294 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = [
+  {
+    title: 'Interactive Geometry Lab',
+    date: '2025',
+    category: 'Math & Animation',
+    description: 'Built an interactive geometry playground using anime.js to visualize geometric transformations, angle types, and mathematical patterns.',
+    skills: ['JavaScript', 'anime.js', 'Geometry', 'Web Design'],
+    highlights: [
+      'Created 4 interactive experiments',
+      'Real-time volume calculations',
+      'Animated pattern generators',
+      'Fibonacci spiral visualization'
+    ]
+  },
+  {
+    title: 'Volume Calculator Pro',
+    date: '2025',
+    category: 'Math & Science',
+    description: 'Developed a visual calculator that computes volumes of 3D shapes (spheres, cubes, cylinders) with live animations showing size changes.',
+    skills: ['Mathematics', 'JavaScript', 'Problem Solving'],
+    highlights: [
+      'Sphere volume: V = 4/3πr³',
+      'Cube volume: V = s³',
+      'Cylinder volume: V = πr²h',
+      'Interactive sliders for all parameters'
+    ]
+  },
+  {
+    title: 'Angle Explorer',
+    date: '2025',
+    category: 'Geometry',
+    description: 'An educational tool that helps visualize and classify angles from 0° to 360°, teaching acute, obtuse, right, and reflex angles.',
+    skills: ['Geometry', 'SVG', 'Animation', 'Education'],
+    highlights: [
+      'Real-time angle classification',
+      'Visual arc representation',
+      'Smooth anime.js transitions',
+      'Educational labeling'
+    ]
+  },
+  {
+    title: 'Mathematical Art Generator',
+    date: '2025',
+    category: 'Creative Math',
+    description: 'Combines geometry and code to create beautiful patterns including triangle tessellations, square grids, hexagonal layouts, and Fibonacci spirals.',
+    skills: ['Creative Coding', 'Pattern Design', 'Math Art'],
+    highlights: [
+      'Golden angle spiral (137.5°)',
+      'Symmetrical patterns',
+      'Multiple geometric bases',
+      'Animated pattern reveals'
+    ]
+  }
+];
+---
+<BaseLayout title="Projects – Addy's Lab" description="A collection of STEM projects and experiments">
+  <section class="container" style="padding:3rem 0 2rem;">
+    <h1 class="section-heading">My STEM Projects</h1>
+    <p class="text-muted" style="max-width: 700px; margin: 0 auto 3rem;">
+      Here are some of the projects I've built while exploring math, science, and creative coding.
+      Each project combines learning with hands-on experimentation.
+    </p>
+  </section>
+
+  <section class="projects-grid container">
+    {projects.map((project) => (
+      <article class="project-card">
+        <div class="project-header">
+          <span class="project-category">{project.category}</span>
+          <span class="project-date">{project.date}</span>
+        </div>
+        <h2>{project.title}</h2>
+        <p class="project-description">{project.description}</p>
+
+        <div class="project-highlights">
+          <h3>Key Features:</h3>
+          <ul>
+            {project.highlights.map((highlight) => (
+              <li>{highlight}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="project-skills">
+          {project.skills.map((skill) => (
+            <span class="skill-tag">{skill}</span>
+          ))}
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <section class="learning-section container">
+    <div class="learning-card">
+      <h2>What I'm Learning</h2>
+      <div class="learning-grid">
+        <div class="learning-item">
+          <h3>📐 Geometry</h3>
+          <p>Angles, shapes, transformations, and spatial relationships</p>
+        </div>
+        <div class="learning-item">
+          <h3>📊 Volume & Area</h3>
+          <p>Calculating 2D and 3D measurements with real formulas</p>
+        </div>
+        <div class="learning-item">
+          <h3>💻 JavaScript</h3>
+          <p>Building interactive animations with anime.js</p>
+        </div>
+        <div class="learning-item">
+          <h3>🎨 Creative Coding</h3>
+          <p>Combining art and mathematics to create visual patterns</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .section-heading {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .text-muted {
+      text-align: center;
+      color: var(--color-muted);
+      line-height: 1.6;
+    }
+
+    .projects-grid {
+      display: grid;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .project-card {
+      background: var(--color-surface);
+      backdrop-filter: blur(20px);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--color-outline);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 50px 100px -50px rgba(45, 22, 90, 0.5);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .project-category {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      color: white;
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .project-date {
+      color: var(--color-muted);
+      font-size: 0.9rem;
+    }
+
+    .project-card h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: var(--color-ink);
+    }
+
+    .project-description {
+      color: var(--color-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-highlights {
+      margin-bottom: 1.5rem;
+    }
+
+    .project-highlights h3 {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: var(--color-ink);
+      font-weight: 600;
+    }
+
+    .project-highlights ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .project-highlights li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--color-muted);
+    }
+
+    .project-highlights li:before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--color-primary);
+      font-weight: bold;
+    }
+
+    .project-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-outline);
+    }
+
+    .skill-tag {
+      background: rgba(196, 182, 255, 0.2);
+      color: var(--color-ink);
+      padding: 0.4rem 0.9rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .learning-section {
+      padding: 2rem 0 4rem;
+    }
+
+    .learning-card {
+      background: var(--color-surface);
+      backdrop-filter: blur(20px);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--color-outline);
+    }
+
+    .learning-card h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--color-ink);
+    }
+
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .learning-item {
+      text-align: center;
+    }
+
+    .learning-item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--color-ink);
+    }
+
+    .learning-item p {
+      color: var(--color-muted);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .learning-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>

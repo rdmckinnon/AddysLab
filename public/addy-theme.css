@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --font-sans: 'Manrope', ui-sans-serif, system-ui;
+  --font-display: 'Playfair Display', Georgia, serif;
+
+  /* Palette Colors */
+  --platinum: #d8e2dc;
+  --platinum-light: #f7f9f8;
+  --platinum-mid: #e8eeeb;
+  --champagne-pink: #ffe5d9;
+  --champagne-pink-light: #fffaf8;
+  --pink: #ffcad4;
+  --pink-light: #fff5f7;
+  --cherry-blossom: #f4acb7;
+  --cherry-blossom-dark: #eb6478;
+  --mountbatten: #9d8189;
+  --mountbatten-dark: #614b51;
+  --mountbatten-darker: #20191b;
+
+  /* Applied Theme */
+  --color-bg: #f7f9f8;
+  --color-surface: rgba(255, 229, 217, 0.5);
+  --color-surface-strong: rgba(255, 229, 217, 0.85);
+  --color-ink: #20191b;
+  --color-muted: #614b51;
+  --color-primary: #f4acb7;
+  --color-primary-dark: #eb6478;
+  --color-secondary: #ffcad4;
+  --color-accent: #ffe5d9;
+  --color-outline: rgba(157, 129, 137, 0.25);
+  --shadow-soft: 0 40px 80px -45px rgba(97, 75, 81, 0.35);
+  --radius-lg: 28px;
+  --radius-sm: 14px;
+}

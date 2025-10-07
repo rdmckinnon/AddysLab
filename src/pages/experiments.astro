@@ -1,0 +1,651 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Geometry Experiments – Addy's Lab" description="Interactive geometry and volume experiments using anime.js">
+  <section class="container" style="padding:3rem 0 2rem;">
+    <h1 class="section-heading">Interactive Geometry Lab</h1>
+    <p class="text-muted" style="max-width: 600px; margin: 0 auto 3rem;">
+      Explore mathematical concepts through interactive animations. Click on experiments to see geometry in action!
+    </p>
+  </section>
+
+  <!-- Experiment 1: Rotating Shapes -->
+  <section class="experiment-section">
+    <div class="container">
+      <div class="experiment-card">
+        <h2>Experiment 1: Geometric Transformations</h2>
+        <p>Watch shapes rotate, scale, and transform in 3D space</p>
+        <div class="experiment-canvas" id="exp1-canvas">
+          <div class="shape square" data-shape="square"></div>
+          <div class="shape circle" data-shape="circle"></div>
+          <div class="shape triangle" data-shape="triangle"></div>
+          <div class="shape hexagon" data-shape="hexagon"></div>
+        </div>
+        <button class="btn btn-primary" id="exp1-btn">Animate Shapes</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experiment 2: Volume Calculator -->
+  <section class="experiment-section">
+    <div class="container">
+      <div class="experiment-card">
+        <h2>Experiment 2: Volume Visualizer</h2>
+        <p>Calculate and compare volumes of 3D shapes</p>
+        <div class="volume-controls">
+          <div class="control-group">
+            <label for="radius-input">Radius (Sphere):</label>
+            <input type="range" id="radius-input" min="1" max="10" value="5" step="0.5">
+            <span id="radius-value">5</span>
+            <div class="volume-result">Volume: <span id="sphere-volume">523.60</span> cm³</div>
+          </div>
+          <div class="control-group">
+            <label for="cube-input">Side Length (Cube):</label>
+            <input type="range" id="cube-input" min="1" max="10" value="5" step="0.5">
+            <span id="cube-value">5</span>
+            <div class="volume-result">Volume: <span id="cube-volume">125.00</span> cm³</div>
+          </div>
+          <div class="control-group">
+            <label for="cylinder-radius">Radius (Cylinder):</label>
+            <input type="range" id="cylinder-radius" min="1" max="10" value="3" step="0.5">
+            <span id="cylinder-radius-value">3</span>
+            <label for="cylinder-height">Height:</label>
+            <input type="range" id="cylinder-height" min="1" max="15" value="8" step="0.5">
+            <span id="cylinder-height-value">8</span>
+            <div class="volume-result">Volume: <span id="cylinder-volume">226.19</span> cm³</div>
+          </div>
+        </div>
+        <div class="experiment-canvas volume-canvas">
+          <div class="volume-shape sphere-3d" id="sphere-3d"></div>
+          <div class="volume-shape cube-3d" id="cube-3d"></div>
+          <div class="volume-shape cylinder-3d" id="cylinder-3d"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experiment 3: Angle Explorer -->
+  <section class="experiment-section">
+    <div class="container">
+      <div class="experiment-card">
+        <h2>Experiment 3: Angle Explorer</h2>
+        <p>Visualize different angle types and their relationships</p>
+        <div class="angle-controls">
+          <label for="angle-input">Angle: <span id="angle-display">45</span>°</label>
+          <input type="range" id="angle-input" min="0" max="360" value="45" step="1">
+          <div class="angle-type" id="angle-type">Acute Angle</div>
+        </div>
+        <div class="experiment-canvas angle-canvas">
+          <svg width="400" height="400" viewBox="0 0 400 400" id="angle-svg">
+            <line x1="200" y1="200" x2="350" y2="200" stroke="#f4acb7" stroke-width="3" />
+            <line id="angle-line" x1="200" y1="200" x2="350" y2="200" stroke="#ffcad4" stroke-width="3" />
+            <circle cx="200" cy="200" r="5" fill="#20191b" />
+            <path id="angle-arc" d="" fill="rgba(244, 172, 183, 0.3)" stroke="#f4acb7" stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experiment 4: Pattern Generator -->
+  <section class="experiment-section">
+    <div class="container">
+      <div class="experiment-card">
+        <h2>Experiment 4: Mathematical Pattern Generator</h2>
+        <p>Create beautiful geometric patterns using symmetry and rotation</p>
+        <div class="pattern-controls">
+          <button class="btn" id="pattern-triangle">Triangle Pattern</button>
+          <button class="btn" id="pattern-square">Square Pattern</button>
+          <button class="btn" id="pattern-hexagon">Hexagon Pattern</button>
+          <button class="btn" id="pattern-spiral">Fibonacci Spiral</button>
+        </div>
+        <div class="experiment-canvas pattern-canvas" id="pattern-canvas">
+          <!-- Patterns will be generated here -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .section-heading {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .text-muted {
+      text-align: center;
+      color: var(--color-muted);
+    }
+
+    .experiment-section {
+      padding: 2rem 0;
+    }
+
+    .experiment-card {
+      background: var(--color-surface);
+      backdrop-filter: blur(20px);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--color-outline);
+    }
+
+    .experiment-card h2 {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+      color: var(--color-ink);
+    }
+
+    .experiment-card > p {
+      color: var(--color-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .experiment-canvas {
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: var(--radius-sm);
+      padding: 2rem;
+      position: relative;
+    }
+
+    .shape {
+      width: 80px;
+      height: 80px;
+      position: relative;
+    }
+
+    .square {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      border-radius: 8px;
+    }
+
+    .circle {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+      border-radius: 50%;
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 40px solid transparent;
+      border-right: 40px solid transparent;
+      border-bottom: 80px solid var(--color-secondary);
+    }
+
+    .hexagon {
+      width: 80px;
+      height: 46px;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-secondary));
+      position: relative;
+      margin: 23px 0;
+    }
+
+    .hexagon:before,
+    .hexagon:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      border-left: 40px solid transparent;
+      border-right: 40px solid transparent;
+    }
+
+    .hexagon:before {
+      bottom: 100%;
+      border-bottom: 23px solid var(--color-accent);
+    }
+
+    .hexagon:after {
+      top: 100%;
+      border-top: 23px solid var(--color-secondary);
+    }
+
+    .volume-controls {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .control-group {
+      background: rgba(255, 255, 255, 0.6);
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .control-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--color-ink);
+    }
+
+    .control-group input[type="range"] {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+
+    .control-group span {
+      display: inline-block;
+      margin-left: 1rem;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .volume-result {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-ink);
+    }
+
+    .volume-result span {
+      color: var(--color-primary);
+      font-size: 1.3rem;
+    }
+
+    .volume-canvas {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      min-height: 250px;
+    }
+
+    .volume-shape {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+
+    .sphere-3d {
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle at 30% 30%, var(--color-accent), var(--color-primary));
+      border-radius: 50%;
+      box-shadow: inset -20px -20px 40px rgba(0,0,0,0.2);
+    }
+
+    .cube-3d {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+      border-radius: 8px;
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .cylinder-3d {
+      width: 60px;
+      height: 120px;
+      background: linear-gradient(90deg, var(--color-secondary) 0%, var(--color-accent) 50%, var(--color-secondary) 100%);
+      border-radius: 30px;
+      box-shadow: inset -10px 0 20px rgba(0,0,0,0.1);
+    }
+
+    .angle-controls {
+      margin-bottom: 2rem;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 1.5rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .angle-controls label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--color-ink);
+      font-size: 1.2rem;
+    }
+
+    .angle-controls input[type="range"] {
+      width: 100%;
+    }
+
+    .angle-type {
+      margin-top: 1rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .angle-canvas {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pattern-controls {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .pattern-canvas {
+      min-height: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pattern-element {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      opacity: 0;
+    }
+
+    @media (max-width: 768px) {
+      .experiment-canvas {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .pattern-controls {
+        flex-direction: column;
+      }
+
+      .volume-canvas {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+  </style>
+
+  <script>
+    import anime from 'animejs';
+
+    // Experiment 1: Shape Animations
+    const exp1Btn = document.getElementById('exp1-btn');
+    if (exp1Btn) {
+      exp1Btn.addEventListener('click', () => {
+        anime({
+          targets: '.shape',
+          translateY: [
+            { value: -100, duration: 500 },
+            { value: 0, duration: 800 }
+          ],
+          rotate: {
+            value: 360,
+            duration: 1500,
+            easing: 'easeInOutQuad'
+          },
+          scale: [
+            { value: 1.3, duration: 500 },
+            { value: 1, duration: 500 }
+          ],
+          delay: anime.stagger(200),
+          loop: false
+        });
+      });
+    }
+
+    // Experiment 2: Volume Calculator
+    const radiusInput = document.getElementById('radius-input');
+    const cubeInput = document.getElementById('cube-input');
+    const cylinderRadius = document.getElementById('cylinder-radius');
+    const cylinderHeight = document.getElementById('cylinder-height');
+
+    function updateVolumes() {
+      const r = parseFloat(radiusInput?.value || 5);
+      const s = parseFloat(cubeInput?.value || 5);
+      const cr = parseFloat(cylinderRadius?.value || 3);
+      const h = parseFloat(cylinderHeight?.value || 8);
+
+      // Calculate volumes
+      const sphereVol = (4/3) * Math.PI * Math.pow(r, 3);
+      const cubeVol = Math.pow(s, 3);
+      const cylinderVol = Math.PI * Math.pow(cr, 2) * h;
+
+      // Update displays
+      document.getElementById('radius-value')!.textContent = r.toString();
+      document.getElementById('sphere-volume')!.textContent = sphereVol.toFixed(2);
+
+      document.getElementById('cube-value')!.textContent = s.toString();
+      document.getElementById('cube-volume')!.textContent = cubeVol.toFixed(2);
+
+      document.getElementById('cylinder-radius-value')!.textContent = cr.toString();
+      document.getElementById('cylinder-height-value')!.textContent = h.toString();
+      document.getElementById('cylinder-volume')!.textContent = cylinderVol.toFixed(2);
+
+      // Animate shapes based on size
+      const sphere = document.getElementById('sphere-3d');
+      const cube = document.getElementById('cube-3d');
+      const cylinder = document.getElementById('cylinder-3d');
+
+      if (sphere) {
+        anime({
+          targets: sphere,
+          width: r * 20,
+          height: r * 20,
+          duration: 300,
+          easing: 'easeOutQuad'
+        });
+      }
+
+      if (cube) {
+        anime({
+          targets: cube,
+          width: s * 20,
+          height: s * 20,
+          duration: 300,
+          easing: 'easeOutQuad'
+        });
+      }
+
+      if (cylinder) {
+        anime({
+          targets: cylinder,
+          width: cr * 20,
+          height: h * 10,
+          duration: 300,
+          easing: 'easeOutQuad'
+        });
+      }
+    }
+
+    radiusInput?.addEventListener('input', updateVolumes);
+    cubeInput?.addEventListener('input', updateVolumes);
+    cylinderRadius?.addEventListener('input', updateVolumes);
+    cylinderHeight?.addEventListener('input', updateVolumes);
+
+    // Experiment 3: Angle Explorer
+    const angleInput = document.getElementById('angle-input');
+    const angleLine = document.getElementById('angle-line');
+    const angleArc = document.getElementById('angle-arc');
+    const angleDisplay = document.getElementById('angle-display');
+    const angleType = document.getElementById('angle-type');
+
+    function updateAngle() {
+      const angle = parseFloat(angleInput?.value || 45);
+      angleDisplay!.textContent = angle.toString();
+
+      // Determine angle type
+      let type = '';
+      if (angle === 0) type = 'Zero Angle';
+      else if (angle < 90) type = 'Acute Angle';
+      else if (angle === 90) type = 'Right Angle';
+      else if (angle < 180) type = 'Obtuse Angle';
+      else if (angle === 180) type = 'Straight Angle';
+      else if (angle < 360) type = 'Reflex Angle';
+      else type = 'Full Rotation';
+
+      angleType!.textContent = type;
+
+      // Calculate line endpoint
+      const rad = (angle * Math.PI) / 180;
+      const x = 200 + 150 * Math.cos(rad);
+      const y = 200 - 150 * Math.sin(rad);
+
+      // Animate the angle line
+      anime({
+        targets: angleLine,
+        x2: x,
+        y2: y,
+        duration: 300,
+        easing: 'easeOutQuad'
+      });
+
+      // Draw arc
+      const largeArc = angle > 180 ? 1 : 0;
+      const arcX = 200 + 80 * Math.cos(rad);
+      const arcY = 200 - 80 * Math.sin(rad);
+      const path = `M 200 200 L 280 200 A 80 80 0 ${largeArc} 0 ${arcX} ${arcY} Z`;
+      angleArc?.setAttribute('d', path);
+    }
+
+    angleInput?.addEventListener('input', updateAngle);
+    updateAngle();
+
+    // Experiment 4: Pattern Generator
+    const patternCanvas = document.getElementById('pattern-canvas');
+
+    function clearPattern() {
+      if (patternCanvas) {
+        patternCanvas.innerHTML = '';
+      }
+    }
+
+    function createPattern(type: string) {
+      clearPattern();
+
+      switch(type) {
+        case 'triangle':
+          createTrianglePattern();
+          break;
+        case 'square':
+          createSquarePattern();
+          break;
+        case 'hexagon':
+          createHexagonPattern();
+          break;
+        case 'spiral':
+          createSpiralPattern();
+          break;
+      }
+    }
+
+    function createTrianglePattern() {
+      const colors = ['#f4acb7', '#ffcad4', '#ffe5d9', '#d8e2dc'];
+      for (let i = 0; i < 12; i++) {
+        const el = document.createElement('div');
+        el.className = 'pattern-element';
+        el.style.width = '0';
+        el.style.height = '0';
+        el.style.borderLeft = '30px solid transparent';
+        el.style.borderRight = '30px solid transparent';
+        el.style.borderBottom = `60px solid ${colors[i % colors.length]}`;
+        el.style.left = `${50 + Math.cos((i * 30) * Math.PI / 180) * 150}px`;
+        el.style.top = `${50 + Math.sin((i * 30) * Math.PI / 180) * 150}px`;
+        patternCanvas?.appendChild(el);
+      }
+
+      anime({
+        targets: '.pattern-element',
+        opacity: [0, 1],
+        scale: [0, 1],
+        rotate: anime.stagger([0, 360]),
+        delay: anime.stagger(100),
+        duration: 800,
+        easing: 'easeOutElastic(1, .6)'
+      });
+    }
+
+    function createSquarePattern() {
+      const colors = ['#f4acb7', '#ffcad4', '#ffe5d9', '#d8e2dc'];
+      for (let row = 0; row < 5; row++) {
+        for (let col = 0; col < 5; col++) {
+          const el = document.createElement('div');
+          el.className = 'pattern-element';
+          el.style.width = '50px';
+          el.style.height = '50px';
+          el.style.background = colors[(row + col) % colors.length];
+          el.style.borderRadius = '8px';
+          el.style.left = `${col * 70 + 50}px`;
+          el.style.top = `${row * 70 + 50}px`;
+          patternCanvas?.appendChild(el);
+        }
+      }
+
+      anime({
+        targets: '.pattern-element',
+        opacity: [0, 1],
+        scale: [0, 1],
+        delay: anime.stagger(50, {grid: [5, 5], from: 'center'}),
+        duration: 600,
+        easing: 'easeOutQuad'
+      });
+    }
+
+    function createHexagonPattern() {
+      const colors = ['#f4acb7', '#ffcad4', '#ffe5d9'];
+      for (let i = 0; i < 18; i++) {
+        const el = document.createElement('div');
+        el.className = 'pattern-element hexagon';
+        const angle = (i * 20) * Math.PI / 180;
+        const radius = 100 + (i % 3) * 50;
+        el.style.left = `${200 + Math.cos(angle) * radius}px`;
+        el.style.top = `${200 + Math.sin(angle) * radius}px`;
+        el.style.width = '60px';
+        el.style.height = '35px';
+        el.style.background = colors[i % colors.length];
+        patternCanvas?.appendChild(el);
+      }
+
+      anime({
+        targets: '.pattern-element',
+        opacity: [0, 1],
+        scale: [0, 1],
+        rotate: anime.stagger([0, 180]),
+        delay: anime.stagger(80),
+        duration: 1000,
+        easing: 'easeOutElastic(1, .8)'
+      });
+    }
+
+    function createSpiralPattern() {
+      const colors = ['#f4acb7', '#ffcad4', '#ffe5d9', '#d8e2dc'];
+      const goldenAngle = 137.5;
+
+      for (let i = 0; i < 50; i++) {
+        const el = document.createElement('div');
+        el.className = 'pattern-element';
+        const angle = (i * goldenAngle) * Math.PI / 180;
+        const radius = Math.sqrt(i) * 15;
+        el.style.left = `${200 + Math.cos(angle) * radius}px`;
+        el.style.top = `${200 + Math.sin(angle) * radius}px`;
+        el.style.width = '20px';
+        el.style.height = '20px';
+        el.style.borderRadius = '50%';
+        el.style.background = colors[i % colors.length];
+        patternCanvas?.appendChild(el);
+      }
+
+      anime({
+        targets: '.pattern-element',
+        opacity: [0, 1],
+        scale: [0, 1],
+        delay: anime.stagger(30),
+        duration: 800,
+        easing: 'easeOutQuad'
+      });
+    }
+
+    document.getElementById('pattern-triangle')?.addEventListener('click', () => createPattern('triangle'));
+    document.getElementById('pattern-square')?.addEventListener('click', () => createPattern('square'));
+    document.getElementById('pattern-hexagon')?.addEventListener('click', () => createPattern('hexagon'));
+    document.getElementById('pattern-spiral')?.addEventListener('click', () => createPattern('spiral'));
+
+    // Auto-start with triangle pattern
+    setTimeout(() => createPattern('triangle'), 500);
+  </script>
+</BaseLayout>

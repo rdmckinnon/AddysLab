@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const subjects = ['Math', 'Science', 'Engineering', 'Art', 'Technology', 'Design'];
+const skills = [
+  { title: 'Geometry Master', body: 'Exploring shapes, angles, and spatial relationships through interactive experiments.' },
+  { title: 'Volume & Measurement', body: 'Calculating and visualizing 3D volumes of spheres, cubes, and cylinders.' },
+  { title: 'Creative Coding', body: 'Building animations and experiments with JavaScript and anime.js.' },
+  { title: 'Problem Solver', body: 'Breaking down complex math problems into simple, visual solutions.' },
+  { title: 'Science Explorer', body: 'Conducting experiments and documenting discoveries.' },
+  { title: 'Digital Artist', body: 'Combining code and creativity to make learning beautiful.' },
+];
+const projects = [
+  { title: 'Geometry Lab', body: 'Interactive shapes · angle calculator · animation experiments', link: '/experiments' },
+  { title: 'Volume Visualizer', body: '3D shapes · real-time calculations · comparative analysis', link: '/experiments' },
+  { title: 'Math Art Studio', body: 'Generative patterns · geometric designs · creative math', link: '/experiments' },
+  { title: 'STEM Journal', body: 'Project documentation · experiment logs · learning reflections', link: '/projects' },
+];
+const quotes = [
+  'Mathematics is the music of reason.',
+  'Every shape tells a story in geometry.',
+  'Science is magic that works.',
+];
+---
+<BaseLayout title="Addy's Lab – STEM Explorer" description="A creative space for math, science, and coding experiments.">
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <span class="hero-eyebrow">STEM Student & Creative Coder</span>
+        <h1>I explore <span class="highlight">math & science</span> through code</h1>
+        <p>Welcome to my lab! Here I combine geometry, art, and technology to make learning interactive and fun.</p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="/experiments">See Experiments</a>
+          <a class="btn" href="/projects">View Projects</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-image"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tool-ribbon">
+    <ul>
+      {subjects.map((subject) => (
+        <li>{subject}</li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="services">
+    <div class="container">
+      <h2>What I'm Learning & Building</h2>
+      <div class="services-grid">
+        {skills.map((skill) => (
+          <div class="service-cell">
+            <h3>{skill.title}</h3>
+            <p>{skill.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio">
+    <div class="container">
+      <h2>Featured Projects</h2>
+      <div class="portfolio-grid">
+        {projects.map((item) => (
+          <article class="portfolio-card">
+            <div class="portfolio-thumb"></div>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <div class="container">
+      <h2>Why I Love STEM</h2>
+      <div class="testimonial-grid">
+        {quotes.map((quote) => (
+          <div class="testimonial-card">
+            <p>"{quote}"</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Explore my interactive experiments</h2>
+        <p>Click below to see geometry come to life with animations, play with 3D volumes, and discover how math creates beautiful patterns.</p>
+        <a class="btn btn-primary" href="/experiments">Launch Experiments</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

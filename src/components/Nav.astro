@@ -1,0 +1,21 @@
+---
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/experiments', label: 'Experiments' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/about', label: 'About' },
+];
+const current = Astro.url.pathname;
+---
+<header class="nav-wrapper">
+  <div class="container nav-shell">
+    <a class="brand" href="/">Addy's Lab</a>
+    <nav>
+      <div class="nav-links">
+        {links.map((link) => (
+          <a href={link.href} aria-current={current === link.href ? 'page' : undefined}>{link.label}</a>
+        ))}
+      </div>
+    </nav>
+  </div>
+</header>
