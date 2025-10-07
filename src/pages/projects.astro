@@ -3,65 +3,78 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const projects = [
   {
-    title: 'Interactive Geometry Lab',
+    title: 'Geometry Lab',
     date: '2025',
-    category: 'Math & Animation',
-    description: 'Built an interactive geometry playground using anime.js to visualize geometric transformations, angle types, and mathematical patterns.',
-    skills: ['JavaScript', 'anime.js', 'Geometry', 'Web Design'],
+    category: 'Math Learning',
+    description: 'Learning about different shapes and how they move and transform. Understanding angles, rotations, and how shapes can change size while keeping their form.',
+    skills: ['Geometry', 'Shapes', 'Angles', 'Measurement'],
     highlights: [
-      'Created 4 interactive experiments',
-      'Real-time volume calculations',
-      'Animated pattern generators',
-      'Fibonacci spiral visualization'
+      'Learning about 4 different shape types',
+      'Understanding transformations',
+      'Exploring rotation and scaling',
+      'Seeing math in action!'
     ]
   },
   {
-    title: 'Volume Calculator Pro',
+    title: 'Volume Calculator',
     date: '2025',
-    category: 'Math & Science',
-    description: 'Developed a visual calculator that computes volumes of 3D shapes (spheres, cubes, cylinders) with live animations showing size changes.',
-    skills: ['Mathematics', 'JavaScript', 'Problem Solving'],
+    category: 'Math & Formulas',
+    description: 'Using real math formulas to calculate how much space is inside 3D shapes. Learning the formulas for spheres, cubes, and cylinders.',
+    skills: ['Mathematics', 'Volume', 'Formulas', 'Problem Solving'],
     highlights: [
       'Sphere volume: V = 4/3πr³',
       'Cube volume: V = s³',
       'Cylinder volume: V = πr²h',
-      'Interactive sliders for all parameters'
+      'Changing sizes and seeing volumes change'
     ]
   },
   {
     title: 'Angle Explorer',
     date: '2025',
     category: 'Geometry',
-    description: 'An educational tool that helps visualize and classify angles from 0° to 360°, teaching acute, obtuse, right, and reflex angles.',
-    skills: ['Geometry', 'SVG', 'Animation', 'Education'],
+    description: 'Discovering different types of angles and learning to identify them. Understanding acute, obtuse, right, and reflex angles.',
+    skills: ['Geometry', 'Angles', 'Measurement', 'Classification'],
     highlights: [
-      'Real-time angle classification',
-      'Visual arc representation',
-      'Smooth anime.js transitions',
-      'Educational labeling'
+      'Learning angle names and types',
+      'Measuring angles from 0° to 360°',
+      'Understanding what makes each angle special',
+      'Seeing angles visually'
     ]
   },
   {
-    title: 'Mathematical Art Generator',
+    title: 'Pattern Discovery',
     date: '2025',
-    category: 'Creative Math',
-    description: 'Combines geometry and code to create beautiful patterns including triangle tessellations, square grids, hexagonal layouts, and Fibonacci spirals.',
-    skills: ['Creative Coding', 'Pattern Design', 'Math Art'],
+    category: 'Math in Nature',
+    description: 'Exploring amazing patterns found in math and nature, like the Fibonacci spiral in sunflowers and seashells. Learning about symmetry and repeating shapes.',
+    skills: ['Patterns', 'Fibonacci', 'Symmetry', 'Nature'],
     highlights: [
-      'Golden angle spiral (137.5°)',
+      'The golden angle (137.5°)',
       'Symmetrical patterns',
-      'Multiple geometric bases',
-      'Animated pattern reveals'
+      'Tessellations (shapes that fit together)',
+      'Math in flowers, shells, and art'
+    ]
+  },
+  {
+    title: 'Raspberry Pi Learning',
+    date: '2025',
+    category: 'Technology',
+    description: 'Starting to learn about Raspberry Pi - a tiny computer that can do amazing things! Exploring how computers work and dreaming about future projects.',
+    skills: ['Technology', 'Computers', 'Electronics', 'Curiosity'],
+    highlights: [
+      'What is a Raspberry Pi?',
+      'Learning about circuits and electronics',
+      'Ideas for future projects',
+      'Understanding how computers think'
     ]
   }
 ];
 ---
 <BaseLayout title="Projects – Addy's Lab" description="A collection of STEM projects and experiments">
   <section class="container" style="padding:3rem 0 2rem;">
-    <h1 class="section-heading">My STEM Projects</h1>
+    <h1 class="section-heading">My STEM Learning Journey</h1>
     <p class="text-muted" style="max-width: 700px; margin: 0 auto 3rem;">
-      Here are some of the projects I've built while exploring math, science, and creative coding.
-      Each project combines learning with hands-on experimentation.
+      Here are the things I'm learning and exploring in math, science, and technology.
+      Each topic helps me understand how the world works!
     </p>
   </section>
 
@@ -99,19 +112,19 @@ const projects = [
       <div class="learning-grid">
         <div class="learning-item">
           <h3>📐 Geometry</h3>
-          <p>Angles, shapes, transformations, and spatial relationships</p>
+          <p>Angles, shapes, transformations, and how objects move in space</p>
         </div>
         <div class="learning-item">
           <h3>📊 Volume & Area</h3>
-          <p>Calculating 2D and 3D measurements with real formulas</p>
+          <p>How to measure 2D and 3D objects using math formulas</p>
         </div>
         <div class="learning-item">
-          <h3>💻 JavaScript</h3>
-          <p>Building interactive animations with anime.js</p>
+          <h3>🤖 Raspberry Pi</h3>
+          <p>Learning about mini computers and how they can control things</p>
         </div>
         <div class="learning-item">
-          <h3>🎨 Creative Coding</h3>
-          <p>Combining art and mathematics to create visual patterns</p>
+          <h3>🔬 STEM Skills</h3>
+          <p>Asking questions, solving problems, and discovering how things work</p>
         </div>
       </div>
     </div>

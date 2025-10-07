@@ -3,9 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Geometry Experiments – Addy's Lab" description="Interactive geometry and volume experiments using anime.js">
   <section class="container" style="padding:3rem 0 2rem;">
-    <h1 class="section-heading">Interactive Geometry Lab</h1>
+    <h1 class="section-heading">My Geometry Experiments</h1>
     <p class="text-muted" style="max-width: 600px; margin: 0 auto 3rem;">
-      Explore mathematical concepts through interactive animations. Click on experiments to see geometry in action!
+      Click around and play with these math experiments! Watch shapes move, measure angles, and see how volume formulas really work.
     </p>
   </section>
 
@@ -13,8 +13,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="experiment-section">
     <div class="container">
       <div class="experiment-card">
-        <h2>Experiment 1: Geometric Transformations</h2>
-        <p>Watch shapes rotate, scale, and transform in 3D space</p>
+        <h2>Experiment 1: Moving Shapes</h2>
+        <p>Click the button to watch shapes spin, grow, and bounce! See how shapes can transform.</p>
         <div class="experiment-canvas" id="exp1-canvas">
           <div class="shape square" data-shape="square"></div>
           <div class="shape circle" data-shape="circle"></div>
@@ -30,8 +30,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="experiment-section">
     <div class="container">
       <div class="experiment-card">
-        <h2>Experiment 2: Volume Visualizer</h2>
-        <p>Calculate and compare volumes of 3D shapes</p>
+        <h2>Experiment 2: Volume Calculator</h2>
+        <p>Move the sliders to change the size of shapes and see how their volumes change using real math formulas!</p>
         <div class="volume-controls">
           <div class="control-group">
             <label for="radius-input">Radius (Sphere):</label>
@@ -68,8 +68,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="experiment-section">
     <div class="container">
       <div class="experiment-card">
-        <h2>Experiment 3: Angle Explorer</h2>
-        <p>Visualize different angle types and their relationships</p>
+        <h2>Experiment 3: Angle Measurer</h2>
+        <p>Drag the slider to see different angles and learn their names - acute, right, obtuse, and more!</p>
         <div class="angle-controls">
           <label for="angle-input">Angle: <span id="angle-display">45</span>°</label>
           <input type="range" id="angle-input" min="0" max="360" value="45" step="1">
@@ -91,8 +91,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="experiment-section">
     <div class="container">
       <div class="experiment-card">
-        <h2>Experiment 4: Mathematical Pattern Generator</h2>
-        <p>Create beautiful geometric patterns using symmetry and rotation</p>
+        <h2>Experiment 4: Pattern Maker</h2>
+        <p>Click the buttons to create cool patterns! See how math makes beautiful designs like the Fibonacci spiral.</p>
         <div class="pattern-controls">
           <button class="btn" id="pattern-triangle">Triangle Pattern</button>
           <button class="btn" id="pattern-square">Square Pattern</button>
