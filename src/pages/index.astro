@@ -35,7 +35,74 @@ const quotes = [
         </div>
       </div>
       <div class="hero-art">
-        <div class="hero-image"></div>
+        <svg class="hero-image" viewBox="0 0 340 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Raspberry Pi Board -->
+          <rect x="20" y="40" width="300" height="200" rx="12" fill="url(#raspberryGradient)" stroke="#20191b" stroke-width="3"/>
+
+          <!-- USB Ports (right side) -->
+          <rect x="290" y="70" width="30" height="30" rx="4" fill="#ffe5d9" stroke="#20191b" stroke-width="2"/>
+          <rect x="290" y="110" width="30" height="30" rx="4" fill="#ffe5d9" stroke="#20191b" stroke-width="2"/>
+
+          <!-- HDMI Port (bottom) -->
+          <rect x="60" y="220" width="50" height="20" rx="3" fill="#ffe5d9" stroke="#20191b" stroke-width="2"/>
+
+          <!-- Power Port (bottom left) -->
+          <rect x="20" y="220" width="30" height="20" rx="3" fill="#ffe5d9" stroke="#20191b" stroke-width="2"/>
+
+          <!-- SD Card slot (top) -->
+          <rect x="140" y="30" width="60" height="12" rx="2" fill="#ffe5d9" stroke="#20191b" stroke-width="2"/>
+
+          <!-- GPIO Pins Header -->
+          <g>
+            <!-- Pin header background -->
+            <rect x="40" y="60" width="80" height="140" rx="4" fill="#20191b" opacity="0.1"/>
+            <!-- Pin rows -->
+            <rect x="50" y="70" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="62" y="70" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="50" y="82" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="62" y="82" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="50" y="94" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="62" y="94" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="50" y="106" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="62" y="106" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="50" y="118" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="62" y="118" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="50" y="130" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="62" y="130" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="50" y="142" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="62" y="142" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="50" y="154" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="62" y="154" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="50" y="166" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="62" y="166" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="50" y="178" width="8" height="8" rx="1" fill="#20191b"/>
+            <rect x="62" y="178" width="8" height="8" rx="1" fill="#20191b"/>
+          </g>
+
+          <!-- Ethernet Port (right side, bottom) -->
+          <rect x="290" y="180" width="30" height="35" rx="4" fill="#ffe5d9" stroke="#20191b" stroke-width="2"/>
+
+          <!-- CPU Chip (center) -->
+          <rect x="180" y="100" width="80" height="80" rx="6" fill="#f4acb7" stroke="#20191b" stroke-width="3"/>
+          <circle cx="220" cy="140" r="20" fill="none" stroke="#20191b" stroke-width="2"/>
+
+          <!-- Mounting Holes -->
+          <circle cx="35" cy="55" r="5" fill="none" stroke="#20191b" stroke-width="2"/>
+          <circle cx="305" cy="55" r="5" fill="none" stroke="#20191b" stroke-width="2"/>
+          <circle cx="35" cy="225" r="5" fill="none" stroke="#20191b" stroke-width="2"/>
+          <circle cx="305" cy="225" r="5" fill="none" stroke="#20191b" stroke-width="2"/>
+
+          <!-- LED indicators -->
+          <circle cx="280" cy="60" r="4" fill="#eb6478"/>
+          <circle cx="270" cy="60" r="4" fill="#f4acb7"/>
+
+          <defs>
+            <linearGradient id="raspberryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#ffe5d9;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#ffcad4;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+        </svg>
       </div>
     </div>
   </section>

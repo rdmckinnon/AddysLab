@@ -255,32 +255,8 @@ p {
 
 .hero-image {
   width: clamp(220px, 40vw, 320px);
-  aspect-ratio: 3/4;
-  border: 3px solid var(--color-line);
-  border-radius: 20px;
-  background: linear-gradient(135deg, #ffe5d9, #ffcad4);
+  height: auto;
   position: relative;
-  overflow: hidden;
-}
-
-.hero-image::before,
-.hero-image::after {
-  content: '';
-  position: absolute;
-  width: 120%;
-  height: 2px;
-  background: var(--color-line);
-  left: -10%;
-}
-
-.hero-image::before {
-  top: 18%;
-  transform: rotate(-4deg);
-}
-
-.hero-image::after {
-  bottom: 18%;
-  transform: rotate(6deg);
 }
 
 /* Tool ribbon */
